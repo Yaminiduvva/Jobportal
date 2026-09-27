@@ -16,9 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CompanyServiceImpl implements ICompanyService {
     private final CompanyRepository companyRepository;
-//    public CompanyServiceImpl(CompanyRepository companyRepository) {
-//        this.companyRepository = companyRepository;
-//    }
+
     @Override
     public List<CompanyDto> getAllCompanies() {
         List<Company> companyList =companyRepository.findAll();

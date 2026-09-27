@@ -16,10 +16,7 @@ import java.util.List;
 public class CompanyController {
 
     private final ICompanyService companyService;
-//    @Autowired
-//    public CompanyController(ICompanyService companyService) {
-//        this.companyService = companyService;
-//    }
+
     @GetMapping(version="1.0")
     public ResponseEntity<List<CompanyDto>> getAllCompanies(){
         List<CompanyDto> companyList = companyService.getAllCompanies();

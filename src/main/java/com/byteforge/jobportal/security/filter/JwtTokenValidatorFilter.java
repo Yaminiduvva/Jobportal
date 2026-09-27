@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,6 +31,8 @@ import java.util.List;
 public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 
     private final AntPathMatcher pathMatcher = new AntPathMatcher();
+    @Value("${jwt.secret}")
+    private String jwtSecret;
 
     @Qualifier("publicPaths")
     private final List<String> publicPaths;
@@ -47,7 +50,7 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
                 Environment env = getEnvironment();
                 if (null != env) {
                     String secret = env.getProperty(ApplicationConstants.JWT_SECRET_KEY,
-                            ApplicationConstants.JWT_SECRET_DEFAULT_VALUE);
+                            jwtSecret);
                     SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
                     if (null != secretKey) {
                         Claims claims = Jwts.parser().verifyWith(secretKey)
