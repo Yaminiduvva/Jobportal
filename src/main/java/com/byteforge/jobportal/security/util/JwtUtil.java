@@ -2,7 +2,6 @@ package com.byteforge.jobportal.security.util;
 
 import com.byteforge.jobportal.constants.ApplicationConstants;
 import com.byteforge.jobportal.entity.JobPortalUser;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
