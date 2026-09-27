@@ -2,7 +2,6 @@ package com.byteforge.jobportal.contact.controller;
 
 import com.byteforge.jobportal.contact.service.IContactService;
 import com.byteforge.jobportal.dto.ContactRequestDto;
-import com.byteforge.jobportal.entity.Contact;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
